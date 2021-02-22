@@ -1,0 +1,21 @@
+.wbdv-sticky-nav-bar{
+    background-color:dodgerblue;
+    width:100%;
+    z-index:2;
+    font-size:20px;
+}
+.wbdv-padding-5px{
+    padding:10px;
+}
+
+.my-plus-stuck-at-bottom-right {
+
+    position: fixed;
+
+    right: 15px;
+
+    bottom: 15px;
+
+}
+
+
