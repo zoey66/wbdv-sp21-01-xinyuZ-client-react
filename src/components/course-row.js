@@ -3,13 +3,10 @@ import {Link} from "react-router-dom";
 
 const CourseRow = ({deleteCourse,
                        course,
-                       title,
-                       owner,
-                       lastModified,
                         updateCourse
 }) =>{
     const [editing,setEditing]=useState(false)
-    const [newTitle,setNewTitle]=useState(title)
+    const [newTitle,setNewTitle]=useState(course.title)
     const saveTitle = () =>{
         setEditing(false)
         const newCourse ={
@@ -22,7 +19,7 @@ const CourseRow = ({deleteCourse,
     <tr>
             <td>
                 {!editing && <Link to='/editor'>
-                    {title}
+                    {course.title}
                 </Link>}
 
                 {editing && <input
@@ -36,14 +33,17 @@ const CourseRow = ({deleteCourse,
             <td className='d-none d-lg-table-cell'>{course.lastModified}</td>
             <td>
                 {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit'></i>}
-                {editing && <span style={{color: 'red'}}>
-                    <i onClick={() => {deleteCourse(course);setEditing(false)}} className='fas fa-times'></i>
-                </span>}
+
+
                 {editing && <span style={{color: 'green'}}>
                     <i onClick={() => {
                     saveTitle(); setEditing(false)
                 }} className='fas fa-check'></i>
                 </span>}
+                {editing && <span style={{color: 'red'}}>
+                    <i onClick={() => {deleteCourse(course);setEditing(false)}} className='fas fa-times'></i>
+                </span>}
+
             </td>
     </tr>)
 }

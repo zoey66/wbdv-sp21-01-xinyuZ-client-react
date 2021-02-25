@@ -13,10 +13,8 @@ export default class CourseManager
 
 
     state = {
-        courses: [
-            {title:'CS5611', owner:'me',lastModified: '1/1/2021'}
+        courses:[]
 
-        ]
     }
 
 
@@ -125,14 +123,14 @@ export default class CourseManager
                     </div>
 
 
-                    <Route path='/courses/table'>
+                    <Route path='/courses/table' exact={true}>
                         <CourseTable
                             updateCourse={this.updateCourse}
                             deleteCourse={this.deleteCourse}
                             courses={this.state.courses}/>
                     </Route>
 
-                    <Route path='/courses/grid'>
+                    <Route path='/courses/grid' exact={true}>
                         <CourseGrid
                             updateCourse={this.updateCourse}
                             deleteCourse={this.deleteCourse}

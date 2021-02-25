@@ -1,9 +1,13 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
 
-const CourseCard =({course,deleteCourse,updateCourse,lastModified,title,owner}) => {
+const CourseCard =({
+                       deleteCourse,
+                       course,
+                       updateCourse
+                   }) => {
     const [editing, setEditing] = useState(false)
-    const [newTitle, setNewTitle] = useState(title)
+    const [newTitle, setNewTitle] = useState(course.title)
     const saveTitle = () => {
         setEditing(false)
         const newCourse = {
@@ -35,13 +39,15 @@ const CourseCard =({course,deleteCourse,updateCourse,lastModified,title,owner}) 
                         {course.title}
                     </Link>
                     {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit'></i>}
-                    {editing && <span style={{color: 'red'}}>
-                    <i onClick={() => {deleteCourse(course); setEditing(false)}} className='fas fa-times'></i>
-                </span>}
+
+
                     {editing && <span style={{color: 'green'}}>
                     <i onClick={() => {
                         saveTitle(); setEditing(false)
                     }} className='fas fa-check'></i>
+                </span>}
+                    {editing && <span style={{color: 'red'}}>
+                    <i onClick={() => {deleteCourse(course);setEditing(false)}} className='fas fa-times'></i>
                 </span>}
                 </div>
 

@@ -27,6 +27,7 @@ const CourseGrid = ({courses,updateCourse,deleteCourse}) =>
             {
                 courses.map(course =>
                     <CourseCard course={course}
+                                key={course._id}
                                 updateCourse={updateCourse}
                                 deleteCourse={deleteCourse}
                                 title={course.title}
