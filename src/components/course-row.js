@@ -9,7 +9,7 @@ const CourseRow = ({deleteCourse,
                         updateCourse
 }) =>{
     const [editing,setEditing]=useState(false)
-    const [newTitle,setNewTitle]=useState(course.title)
+    const [newTitle,setNewTitle]=useState(title)
     const saveTitle = () =>{
         setEditing(false)
         const newCourse ={
@@ -22,7 +22,7 @@ const CourseRow = ({deleteCourse,
     <tr>
             <td>
                 {!editing && <Link to='/editor'>
-                    {course.title}
+                    {title}
                 </Link>}
 
                 {editing && <input
@@ -37,7 +37,7 @@ const CourseRow = ({deleteCourse,
             <td>
                 {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit'></i>}
                 {editing && <span style={{color: 'red'}}>
-                    <i onClick={() => {deleteCourse(course); setEditing(false)}} className='fas fa-times'></i>
+                    <i onClick={() => {deleteCourse(course);setEditing(false)}} className='fas fa-times'></i>
                 </span>}
                 {editing && <span style={{color: 'green'}}>
                     <i onClick={() => {

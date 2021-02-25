@@ -18,7 +18,7 @@ export default class CourseTable
         return(
             <div>
                 <div className='container'>
-                <table className='table'>
+                <table className='table table-striped' >
                     <thead>
                         <tr>
                             <th scope='col'><h2>Title</h2></th>

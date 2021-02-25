@@ -1,9 +1,9 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
 
-const CourseCard =({course,deleteCourse,updateCourse}) => {
+const CourseCard =({course,deleteCourse,updateCourse,lastModified,title,owner}) => {
     const [editing, setEditing] = useState(false)
-    const [newTitle, setNewTitle] = useState(course.title)
+    const [newTitle, setNewTitle] = useState(title)
     const saveTitle = () => {
         setEditing(false)
         const newCourse = {
@@ -34,11 +34,15 @@ const CourseCard =({course,deleteCourse,updateCourse}) => {
                     <Link to='/editor' className='btn btn-primary'>
                         {course.title}
                     </Link>
-                    {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit float-right'></i>}
-                    {editing && <i onClick={() => {deleteCourse(course); setEditing(false)}} className='fas fa-trash'></i>}
-                    {editing && <i onClick={() => {
+                    {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit'></i>}
+                    {editing && <span style={{color: 'red'}}>
+                    <i onClick={() => {deleteCourse(course); setEditing(false)}} className='fas fa-times'></i>
+                </span>}
+                    {editing && <span style={{color: 'green'}}>
+                    <i onClick={() => {
                         saveTitle(); setEditing(false)
-                    }} className='fas fa-check'></i>}
+                    }} className='fas fa-check'></i>
+                </span>}
                 </div>
 
             </div>

@@ -14,7 +14,7 @@ export default class CourseManager
 
     state = {
         courses: [
-            {title:'CS5610', owner:'me',lastModified: '1/1/2021'}
+            {title:'CS5611', owner:'me',lastModified: '1/1/2021'}
 
         ]
     }
@@ -69,9 +69,10 @@ export default class CourseManager
             .then(status => {
                 this.setState((prevState) => ({
                     courses: prevState.courses.filter
-                    (course => course._id!== courseToDelete._id)
+                    (course => course!== courseToDelete)
                 }))
             })
+
     }
 
     addnew=(title) => {
