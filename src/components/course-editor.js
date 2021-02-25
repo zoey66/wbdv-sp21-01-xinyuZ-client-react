@@ -5,16 +5,17 @@ const CourseEditor = ({history}) =>
     <div>
 
 
-            {/*<i className='fas fa-times float-right'*/}
-            {/*   onClick={() => history.goBack()}></i>*/}
+
 
                 <nav className="navbar navbar-expand-lg wbdv-sticky-nav-bar bg-secondary ">
                     <div className="container-fluid ">
                         <div className="col-4">
                             <div className="navbar-header">
-                                <Link to ='/courses/table'>
-                                    <i className='fas fa-arrow-left'></i>
-                                </Link>
+                                {/*<Link to ='/courses/table'>*/}
+                                {/*    <i className='fas fa-arrow-left'></i>*/}
+                                {/*</Link>*/}
+                                <i className='fas fa-arrow-left'
+                                   onClick={() => history.goBack()}></i>
                                 <i className="far fa-times fa-1.5x"></i>
                                 CS5610 - WebDev
                         </div>

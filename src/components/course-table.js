@@ -17,7 +17,6 @@ export default class CourseTable
 
         return(
             <div>
-
                 <table className='table table-striped'
                        style={{width:'100%',overflow:'auto'}}>
                     <thead>
