@@ -3,7 +3,10 @@ import {Link} from "react-router-dom";
 
 const CourseRow = ({deleteCourse,
                        course,
-                        updateCourse
+                        updateCourse,
+                        get_course_title,
+                        title
+
 }) =>{
     const [editing,setEditing]=useState(false)
     const [newTitle,setNewTitle]=useState(course.title)
@@ -18,7 +21,11 @@ const CourseRow = ({deleteCourse,
     return (
     <tr>
             <td>
-                {!editing && <Link to='/editor'>
+                {!editing && <Link to={`/courses/table/edit/${course._id}`}
+                onClick={()=> {
+                    get_course_title(title)
+                }}
+                >
                     {course.title}
                 </Link>}
 

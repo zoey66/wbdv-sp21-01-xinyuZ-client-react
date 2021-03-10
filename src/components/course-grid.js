@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import CourseCard from "./course-card";
 
-const CourseGrid = ({courses,updateCourse,deleteCourse}) =>
+const CourseGrid = ({courses,updateCourse,deleteCourse,get_course_title}) =>
     <div>
         <div className='row'>
             <div className="col-4">
@@ -32,7 +32,9 @@ const CourseGrid = ({courses,updateCourse,deleteCourse}) =>
                                 deleteCourse={deleteCourse}
                                 title={course.title}
                                 owner={course.owner}
-                                lastModified={course.lastModified}/>
+                                lastModified={course.lastModified}
+                                get_course_title={get_course_title}
+                    />
 
                 )
             }

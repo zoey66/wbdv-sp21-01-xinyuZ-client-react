@@ -26,7 +26,7 @@ export const updateCourse = (courseId,course)=>
         }})
         .then(response => response.json())
 
-export const findUserById=(courseId)=>{
+export const findCourseById=(courseId)=>{
     fetch(`${COURSES_URL}/${courseId}`)
         .then(response => response.json())
 }
@@ -36,7 +36,7 @@ const api ={
         deleteCourse: deleteCourse,
         createCourse: createCourse,
         updateCourse:updateCourse,
-        findUserById
+        findCourseById
 
 }
 export default api

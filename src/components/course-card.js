@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 const CourseCard =({
                        deleteCourse,
                        course,
-                       updateCourse
+                       updateCourse,
+         get_course_title
                    }) => {
     const [editing, setEditing] = useState(false)
     const [newTitle, setNewTitle] = useState(course.title)
@@ -12,7 +13,8 @@ const CourseCard =({
         setEditing(false)
         const newCourse = {
             ...course,
-            title: newTitle
+            title: newTitle,
+
         }
         updateCourse(newCourse)
     }
@@ -24,7 +26,10 @@ const CourseCard =({
                      className='card-img=top' alt='...'/>
                 <div className='card-body'>
                     <h5 className='card-title'>
-                        {!editing && <Link to='/editor'>
+                        {!editing && <Link to={`/courses/grid/edit/${course._id}`}
+                                           onClick={()=> {
+                                               get_course_title(course.title)
+                                           }}>
                             {course.title}
                         </Link>}
 
@@ -35,7 +40,10 @@ const CourseCard =({
                     </h5>
                     <p className='card-text'>Some description</p>
                     <img src={``}/>
-                    <Link to='/editor' className='btn btn-primary'>
+                    <Link to={`/courses/grid/edit/${course._id}`} className='btn btn-primary'
+                          onClick={()=> {
+                              get_course_title(course.title)
+                          }}>
                         {course.title}
                     </Link>
                     {!editing && <i onClick={() => setEditing(true)} className='fas fa-edit'></i>}

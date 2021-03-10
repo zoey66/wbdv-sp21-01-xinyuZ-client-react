@@ -2,7 +2,7 @@ import React from "react";
 import CourseRow from "./course-row";
 import {Link} from "react-router-dom";
 import CourseCard from "./course-card";
-import {deleteCourse} from "../service/course-service";
+import {deleteCourse} from "../services/course-service";
 
 export default class CourseTable
     extends React.Component{
@@ -46,7 +46,10 @@ export default class CourseTable
                                 course={course}
                                 title={course.title}
                                 owner={course.owner}
-                                lastModified={course.lastModified}/>
+                                lastModified={course.lastModified}
+                                get_course_title={this.props.get_course_title}
+
+                            />
                         )
                     }
                     </tbody>
