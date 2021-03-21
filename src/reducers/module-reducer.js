@@ -47,9 +47,9 @@ const moduleReducer = (state=initialState, action) => {
                     }
                 })
             }
-                default:
-                return state
-            }
+        default:
+            return state
+    }
 
 }
 export default moduleReducer

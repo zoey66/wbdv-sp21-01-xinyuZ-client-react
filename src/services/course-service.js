@@ -38,5 +38,5 @@ const api ={
         updateCourse:updateCourse,
         findCourseById
 
-}
-export default api
+};
+export default api;
