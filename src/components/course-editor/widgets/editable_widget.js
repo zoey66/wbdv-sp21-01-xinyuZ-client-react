@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom";
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 
@@ -12,6 +11,7 @@ const EditableWidget =(
     })=>{
     const [widgets, setWidgets] = useState([])
     const [widget, setWidget] = useState({})
+
     return (
         <>
             {
@@ -25,8 +25,18 @@ const EditableWidget =(
             }
             {
                 widget_item.id !== widget.id &&
-                <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
+                <div>
+                    {widget_item.size === 1 && <h1>{widget_item.text}</h1>}
+                    {widget_item.size === 2 && <h2>{widget_item.text}</h2>}
+                    {widget_item.size === 3 && <h3>{widget_item.text}</h3>}
+                    {widget_item.size === 4 && <h4>{widget_item.text}</h4>}
+                    {widget_item.size === 5 && <h5>{widget_item.text}</h5>}
+                    {widget_item.size === 6 && <h6>{widget_item.text}</h6>}
+                    <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
+                </div>
+
             }
+
             {
                 widget_item.type === "HEADING" &&
                 <HeadingWidget
@@ -39,7 +49,7 @@ const EditableWidget =(
                 <ParagraphWidget
                     setWidget={setWidget}
                     editing={widget_item.id === widget.id}
-                    widget={widget_item}/>
+                    widget={widget}/>
             }
         </>
     )

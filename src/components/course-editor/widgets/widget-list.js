@@ -20,17 +20,14 @@ const WidgetList = (
     // const [widgets, setWidgets] = useState([])
     const [widget, setWidget] = useState({})
     useEffect(() => {
-
             findWidgetForTopic(topicId)
-
     }, [topicId])
 
 
     return(
         <div>
             <i onClick={() => createWidgetForTopic(topicId)} className="fas fa-plus float-right fa-2x"></i>
-            <h1>Widget List {widgets.map(widget=>widget.id)}</h1>
-
+            <h1>Widget List</h1>
             <ul className="list-group">
                 {
                     widgets.map(_widget =>
