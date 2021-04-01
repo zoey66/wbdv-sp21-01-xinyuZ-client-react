@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const ImageWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatewidget}) => {
+const ImageWidget = ({widget, setWidget,widget_item,deletewidget,updatewidget}) => {
+    const[editing,setEditing]=useState(widget_item.id === widget.id)
     return (
+
         <div>
             {
                 editing &&
@@ -10,13 +12,13 @@ const ImageWidget = ({widget, setWidget, editing,widget_item,deletewidget,update
 
                     <i onClick={() => deletewidget(widget_item)} className="fas fa-trash float-right"></i>
                     <i onClick={() => {
-                        updatewidget(widget_item.id,widget)
+                        updatewidget(widget_item.id,widget);setEditing(false)
                     }} className="fas fa-check float-right"></i>
 
                     URL
                     <input onChange={(e) =>
-                        setWidget(widget => ({...widget, url: e.target.value}))}
-                           value={widget.url} className="form-control"/>
+                        setWidget(widget => ({...widget, src: e.target.value}))}
+                           value={widget.src} className="form-control"/>
                     width
                     <input onChange={(e) =>
                         setWidget(widget => ({...widget, width: e.target.value}))}
@@ -45,13 +47,14 @@ const ImageWidget = ({widget, setWidget, editing,widget_item,deletewidget,update
             {
                 !editing &&
                     <div>
-                        <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
                         <h2>{widget_item.type} Widget</h2>
-                <p>
-                    {widget.url}
-                    {widget.height}
-                    {widget.width}
-                </p>
+                        {widget_item.src}
+                        {widget_item.height}
+                        {widget_item.width}
+                        <i onClick={() => {
+                            setWidget(widget_item);
+                            setEditing(true)
+                        }} className="fas fa-cog float-right"></i>
                     </div>
 
             }

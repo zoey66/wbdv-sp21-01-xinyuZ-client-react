@@ -19,6 +19,7 @@ const WidgetList = (
     const {layout,courseId,moduleId,lessonId,topicId} = useParams()
     // const [widgets, setWidgets] = useState([])
 
+
     useEffect(() => {
             findWidgetForTopic(topicId)
     }, [topicId])

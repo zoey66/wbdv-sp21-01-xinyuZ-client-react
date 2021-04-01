@@ -1,8 +1,8 @@
-import React from 'react'
-import {useState} from 'react/cjs/react.production.min'
+import React, {useState, useEffect} from 'react'
 
-const HeadingWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatewidget}) => {
 
+const HeadingWidget = ({widget, setWidget,widget_item,deletewidget,updatewidget}) => {
+    const[editing,setEditing]=useState(widget_item.id === widget.id)
     return(
     <div>
         {/*{widget.size === 1 && <h1>{widget.text}</h1>}*/}
@@ -18,7 +18,7 @@ const HeadingWidget = ({widget, setWidget, editing,widget_item,deletewidget,upda
             <div>
                 <i onClick={() => deletewidget(widget_item)} className="fas fa-trash float-right"></i>
                 <i onClick={() => {
-                    updatewidget(widget_item.id,widget)
+                    updatewidget(widget_item.id,widget);setEditing(false)
                 }} className="fas fa-check float-right"></i>
 
                 <select onChange={(e) =>
@@ -35,7 +35,7 @@ const HeadingWidget = ({widget, setWidget, editing,widget_item,deletewidget,upda
                 </select>
 
                 <input onChange={(e) =>
-                    setWidget(widget => ({...widget, text: e.target.value}))} value={widget.text}
+                setWidget(widget => ({...widget, text: e.target.value})) } value={widget.text}
                        className="form-control"/>
 
 
@@ -56,7 +56,10 @@ const HeadingWidget = ({widget, setWidget, editing,widget_item,deletewidget,upda
             <div>
                 <h2>{widget_item.type} Widget</h2>
                 {widget_item.text}
-                <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
+                <i onClick={() => {
+                    setWidget(widget_item);
+                    setEditing(true)
+                }} className="fas fa-cog float-right"></i>
             </div>
 
         }

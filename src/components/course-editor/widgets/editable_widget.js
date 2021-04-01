@@ -14,6 +14,7 @@ const EditableWidget =(
 
     })=>{
     const [widget, setWidget] = useState({})
+    const [editing,setEditing]=useState(false)
 
     return (
         <>
@@ -42,7 +43,8 @@ const EditableWidget =(
                 widget_item.type === "HEADING" &&
                 <HeadingWidget
                     setWidget={setWidget}
-                    editing={widget_item.id === widget.id}
+                    // editing={widget_item.id === widget.id}
+                    // setEditing={setEditing}
                     widget={widget}
                     widget_item={widget_item}
                     deletewidget={deletewidget}
@@ -53,7 +55,8 @@ const EditableWidget =(
                 widget_item.type === "PARAGRAPH" &&
                 <ParagraphWidget
                     setWidget={setWidget}
-                    editing={widget_item.id === widget.id}
+                    // editing={widget_item.id === widget.id}
+                    // setEditing={setEditing}
                     widget={widget}
                     widget_item={widget_item}
                     deletewidget={deletewidget}
@@ -63,7 +66,8 @@ const EditableWidget =(
                 widget_item.type === "LIST" &&
                 <ListWidget
                     setWidget={setWidget}
-                    editing={widget_item.id === widget.id}
+                    // editing={widget_item.id === widget.id}
+                    // setEditing={setEditing}
                     widget={widget}
                     widget_item={widget_item}
                     deletewidget={deletewidget}
@@ -73,7 +77,8 @@ const EditableWidget =(
                 widget_item.type === "IMAGE" &&
                 <ImageWidget
                     setWidget={setWidget}
-                    editing={widget_item.id === widget.id}
+                    // editing={widget_item.id === widget.id}
+                    // setEditing={setEditing}
                     widget={widget}
                     widget_item={widget_item}
                     deletewidget={deletewidget}

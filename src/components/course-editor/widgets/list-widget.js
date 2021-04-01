@@ -1,19 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const ListWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatewidget}) => {
+const ListWidget = ({widget, setWidget,widget_item,deletewidget,updatewidget}) => {
+    const[editing,setEditing]=useState(widget_item.id === widget.id)
     return (
         <div>
-            <h2>List Widget</h2>
-            <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
+
             {
                 !editing &&
-                <>
+                <div>
+                    <i onClick={() => {
+                        setWidget(widget_item);
+                        setEditing(true)
+                    }} className="fas fa-cog float-right"></i>
                     <h2>{widget_item.type} Widget</h2>
                     {
-                        widget.ordered &&
+                        widget_item.ordered &&
                         <ol>
                             {
-                                widget.text.split("\n").map(item => {
+                                widget_item && widget_item.text && widget_item.text.split("\n").map(item => {
                                     return(
                                         <li>{item}</li>
                                     )
@@ -22,10 +26,10 @@ const ListWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatew
                         </ol>
                     }
                     {
-                        !widget.ordered &&
+                        !widget_item.ordered &&
                         <ul>
                             {
-                                widget.text.split("\n").map(item => {
+                                widget_item && widget_item.text && widget_item.text.split("\n").map(item => {
                                     return(
                                         <li>{item}</li>
                                     )
@@ -33,19 +37,20 @@ const ListWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatew
                             }
                         </ul>
                     }
-                </>
+                </div>
             }
             {
                 editing &&
                 <div>
                     <i onClick={() => deletewidget(widget_item)} className="fas fa-trash float-right"></i>
                     <i onClick={() => {
-                        updatewidget(widget_item.id,widget)
+                        updatewidget(widget_item.id,widget);setEditing(false)
                     }} className="fas fa-check float-right"></i>
                     <input type="checkbox"
                            onChange={(e) =>
                                setWidget(widget => ({...widget, ordered: e.target.value=='on'}))}
                     /> Ordered
+
                     <br/>
                     List Items
                     <textarea onChange={(e) =>
