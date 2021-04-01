@@ -1,21 +1,26 @@
 import React from 'react'
 import {useState} from 'react/cjs/react.production.min'
 
-const HeadingWidget = ({widget, setWidget, editing}) => {
+const HeadingWidget = ({widget, setWidget, editing,widget_item,deletewidget,updatewidget}) => {
 
     return(
     <div>
+        {/*{widget.size === 1 && <h1>{widget.text}</h1>}*/}
+        {/*{widget.size === 2 && <h2>{widget.text}</h2>}*/}
+        {/*{widget.size === 3 && <h3>{widget.text}</h3>}*/}
+        {/*{widget.size === 4 && <h4>{widget.text}</h4>}*/}
+        {/*{widget.size === 5 && <h5>{widget.text}</h5>}*/}
+        {/*{widget.size === 6 && <h6>{widget.text}</h6>}*/}
 
-        {widget.size === 1 && <h1>{widget.text}</h1>}
-        {widget.size === 2 && <h2>{widget.text}</h2>}
-        {widget.size === 3 && <h3>{widget.text}</h3>}
-        {widget.size === 4 && <h4>{widget.text}</h4>}
-        {widget.size === 5 && <h5>{widget.text}</h5>}
-        {widget.size === 6 && <h6>{widget.text}</h6>}
 
         {
             editing &&
             <div>
+                <i onClick={() => deletewidget(widget_item)} className="fas fa-trash float-right"></i>
+                <i onClick={() => {
+                    updatewidget(widget_item.id,widget)
+                }} className="fas fa-check float-right"></i>
+
                 <select onChange={(e) =>
                     setWidget(widget => ({...widget, type: (e.target.value)}))}
                         value={widget.type}
@@ -23,16 +28,15 @@ const HeadingWidget = ({widget, setWidget, editing}) => {
                     <option value={"HEADING"}>Heading</option>
                     <option value={"PARAGRAPH"}>Paragraph</option>
                     <option>Video</option>
-                    <option>Image</option>
+                    <option value={'IMAGE'}>Image</option>
                     <option>link</option>
-                    <option>List</option>
+                    <option value={'LIST'}>List</option>
                     <option>HTML</option>
                 </select>
 
                 <input onChange={(e) =>
                     setWidget(widget => ({...widget, text: e.target.value}))} value={widget.text}
                        className="form-control"/>
-
 
 
                 <select onChange={(e) =>
@@ -46,6 +50,15 @@ const HeadingWidget = ({widget, setWidget, editing}) => {
                     <option value={6}>Heading 6</option>
                 </select>
             </div>
+        }
+        {
+            !editing &&
+            <div>
+                <h2>{widget_item.type} Widget</h2>
+                {widget_item.text}
+                <i onClick={() => setWidget(widget_item)} className="fas fa-cog float-right"></i>
+            </div>
+
         }
     </div>)
 }

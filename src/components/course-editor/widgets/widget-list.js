@@ -18,7 +18,7 @@ const WidgetList = (
 ) => {
     const {layout,courseId,moduleId,lessonId,topicId} = useParams()
     // const [widgets, setWidgets] = useState([])
-    const [widget, setWidget] = useState({})
+
     useEffect(() => {
             findWidgetForTopic(topicId)
     }, [topicId])
@@ -34,7 +34,10 @@ const WidgetList = (
                         <li key={_widget.id} className="list-group-item">
                             <EditableWidget deletewidget={deleteWidgetForTopic}
                                             updatewidget={updateWidgetForTopic}
-                                            widget_item={_widget}/>
+                                            widget_item={_widget}
+                                            // widget={widget}
+                                            // setWidget={setWidget}
+                            />
                         </li>
                     )
                 }
@@ -66,8 +69,8 @@ const dtpm =(dispatch)=>({
             }))
     },
 
-    updateWidgetForTopic: (widget) =>{
-        widgetService.updateWidget(widget.id,widget)
+    updateWidgetForTopic: (id,widget) =>{
+        widgetService.updateWidget(id,widget)
             .then(status =>dispatch({
                 type:'UPDATE_WIDGET',
                 widget
