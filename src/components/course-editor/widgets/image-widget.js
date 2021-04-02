@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 
+
 const ImageWidget = ({widget, setWidget,widget_item,deletewidget,updatewidget}) => {
     const[editing,setEditing]=useState(widget_item.id === widget.id)
+
     return (
 
         <div>
@@ -48,9 +50,8 @@ const ImageWidget = ({widget, setWidget,widget_item,deletewidget,updatewidget}) 
                 !editing &&
                     <div>
                         <h2>{widget_item.type} Widget</h2>
-                        {widget_item.src}
-                        {widget_item.height}
-                        {widget_item.width}
+                        <img src={widget_item.src}  className='img-responsive' alt=''
+                            width={widget_item.width} height={widget_item.height}/>
                         <i onClick={() => {
                             setWidget(widget_item);
                             setEditing(true)
