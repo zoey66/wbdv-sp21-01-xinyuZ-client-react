@@ -24,7 +24,7 @@ const WidgetList = (
             findWidgetForTopic(topicId)
     }, [topicId])
 
-
+    //console.log(widgets)
     return(
         <div>
             <i onClick={() => createWidgetForTopic(topicId)} className="fas fa-plus float-right fa-2x"></i>
@@ -36,8 +36,7 @@ const WidgetList = (
                             <EditableWidget deletewidget={deleteWidgetForTopic}
                                             updatewidget={updateWidgetForTopic}
                                             widget_item={_widget}
-                                            // widget={widget}
-                                            // setWidget={setWidget}
+
                             />
                         </li>
                     )
