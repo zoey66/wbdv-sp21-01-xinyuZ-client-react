@@ -8,14 +8,14 @@ const TrueFalseQuestion = ({question}) => {
         <div>
             <h4>
                 {question.question}
-                {/*{*/}
-                {/*    answer == question.correct &&*/}
-                {/*    <i className="fas fa-check"></i>*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    answer != question.correct &&*/}
-                {/*    <i className="fas fa-times"></i>*/}
-                {/*}*/}
+                {
+                    grade && yourAnswer == question.correct &&
+                    <i className="fas fa-check float-right" style={{color: 'green'}}></i>
+                }
+                {
+                    grade && yourAnswer != question.correct &&
+                    <i className="fas fa-times float-right" style={{color: 'red'}}></i>
+                }
             </h4>
             {/*{question.correct}*/}
             {/*<br/>*/}

@@ -7,6 +7,14 @@ const MultipleChoiceQuestion = ({question}) => {
         <div>
             <h4>
                 {question.question}
+                {
+                    grade && yourAnswer == question.correct &&
+                    <i className="fas fa-check float-right" style={{color: 'green'}}></i>
+                }
+                {
+                   grade && yourAnswer != question.correct &&
+                    <i className="fas fa-times float-right" style={{color: 'red'}}></i>
+                }
 
             </h4>
             <ul className="list-group">
