@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import questionsService from '../../../services/questions-service'
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question,answer}) => {
     const [yourAnswer, setYourAnswer] = useState("")
     const choices=['true','false']
     const [grade,setGrade]=useState(false)
@@ -59,7 +60,9 @@ const TrueFalseQuestion = ({question}) => {
             </p>
 
             <button type="button" className="btn btn-success"
-                    onClick={()=>{setGrade(true)}}> Grade</button>
+                    onClick={()=>{setGrade(true); answer.push({yourAnswer});
+                        questionsService.updateAnswer(question._id,yourAnswer)
+                    }}> Grade</button>
 
         </div>
     )

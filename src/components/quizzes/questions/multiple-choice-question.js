@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import questionsService from '../../../services/questions-service'
 
-const MultipleChoiceQuestion = ({question}) => {
+
+const MultipleChoiceQuestion = ({question,answer}) => {
     const [yourAnswer, setYourAnswer] = useState("")
     const [grade,setGrade]=useState(false)
     return(
@@ -53,7 +55,9 @@ const MultipleChoiceQuestion = ({question}) => {
                 Your answer: {yourAnswer}
             </p>
             <button type="button" className="btn btn-success"
-                    onClick={()=>{setGrade(true)}}> Grade</button>
+                    onClick={()=>{setGrade(true); answer.push({yourAnswer});
+                    questionsService.updateAnswer(question._id,yourAnswer)
+                    } }> Grade</button>
         </div>
     )
 }
